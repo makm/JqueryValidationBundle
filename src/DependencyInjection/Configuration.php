@@ -14,9 +14,9 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
+        $treeBuilder = new TreeBuilder('boekkooi_jquery_validation');
 
-        $rootNode = $treeBuilder->root('boekkooi_jquery_validation');
+        $rootNode = $treeBuilder->getRootNode();
         $rootNode->append($this->loadFormNode());
         $rootNode->append($this->loadTwigNode());
 
@@ -25,47 +25,47 @@ class Configuration implements ConfigurationInterface
 
     private function loadFormNode()
     {
-        $treeBuilder = new TreeBuilder();
+        $treeBuilder = new TreeBuilder('form');
 
-        $node = $treeBuilder->root('form');
+        $node = $treeBuilder->getRootNode();
         $node
             ->treatTrueLike(array('enabled' => true, 'additional' => true))
             ->treatFalseLike(array('enabled' => false))
             ->addDefaultsIfNotSet()
             ->children()
-                ->booleanNode('enabled')
-                    ->info('Set to false to disable the form constraints being parsed/converted by default')
-                    ->defaultTrue()
-                ->end()
-                ->arrayNode('additionals')
-                    ->beforeNormalization()->ifString()->then(function ($v) { return strtolower($v) === 'true'; })->end()
-                    ->treatTrueLike(array(
-                        'accept' => true,
-                        'ipv4' => true,
-                        'ipv6' => true,
-                        'iban' => true,
-                        'luhn' => true,
-                        'pattern' => true,
-                        'time' => true,
-                        'one_or_other' => true,
-                        'required_group' => true,
-                        'is_boolean' => true
-                    ))
-                    ->treatFalseLike(array())
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->booleanNode('accept')->defaultFalse()->end()
-                        ->booleanNode('ipv4')->defaultFalse()->end()
-                        ->booleanNode('ipv6')->defaultFalse()->end()
-                        ->booleanNode('iban')->defaultFalse()->end()
-                        ->booleanNode('luhn')->defaultFalse()->end()
-                        ->booleanNode('pattern')->defaultFalse()->end()
-                        ->booleanNode('time')->defaultFalse()->end()
-                        ->booleanNode('one_or_other')->defaultFalse()->end()
-                        ->booleanNode('required_group')->defaultFalse()->end()
-                        ->booleanNode('is_boolean')->defaultFalse()->end()
-                    ->end()
-                ->end()
+            ->booleanNode('enabled')
+            ->info('Set to false to disable the form constraints being parsed/converted by default')
+            ->defaultTrue()
+            ->end()
+            ->arrayNode('additionals')
+            ->beforeNormalization()->ifString()->then(function ($v) { return strtolower($v) === 'true'; })->end()
+            ->treatTrueLike(array(
+                'accept' => true,
+                'ipv4' => true,
+                'ipv6' => true,
+                'iban' => true,
+                'luhn' => true,
+                'pattern' => true,
+                'time' => true,
+                'one_or_other' => true,
+                'required_group' => true,
+                'is_boolean' => true
+            ))
+            ->treatFalseLike(array())
+            ->addDefaultsIfNotSet()
+            ->children()
+            ->booleanNode('accept')->defaultFalse()->end()
+            ->booleanNode('ipv4')->defaultFalse()->end()
+            ->booleanNode('ipv6')->defaultFalse()->end()
+            ->booleanNode('iban')->defaultFalse()->end()
+            ->booleanNode('luhn')->defaultFalse()->end()
+            ->booleanNode('pattern')->defaultFalse()->end()
+            ->booleanNode('time')->defaultFalse()->end()
+            ->booleanNode('one_or_other')->defaultFalse()->end()
+            ->booleanNode('required_group')->defaultFalse()->end()
+            ->booleanNode('is_boolean')->defaultFalse()->end()
+            ->end()
+            ->end()
             ->end();
 
         return $node;
@@ -73,15 +73,15 @@ class Configuration implements ConfigurationInterface
 
     private function loadTwigNode()
     {
-        $treeBuilder = new TreeBuilder();
+        $treeBuilder = new TreeBuilder('twig');
 
-        $node = $treeBuilder->root('twig');
+        $node = $treeBuilder->getRootNode();
         $node
             ->treatTrueLike(array())
             ->treatFalseLike(array())
             ->addDefaultsIfNotSet()
             ->children()
-                ->booleanNode('enabled')->defaultTrue()->end()
+            ->booleanNode('enabled')->defaultTrue()->end()
             ->end();
 
         return $node;
