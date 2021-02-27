@@ -115,8 +115,6 @@
         {%- set attr = attr|merge({'data-prototype': form_row(prototype) ~ '<script>'}) -%}
     {% endif %}
 
-    {{- block('form_widget') -}}
-
     {% if prototype is defined %}
     <script>
         (function($){
