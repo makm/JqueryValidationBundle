@@ -1,49 +1,56 @@
 {
-    "name": "boekkooi/jquery-validation-bundle",
-    "type": "symfony-bundle",
-    "keywords": [ "jquery", "form", "validation", "validator", "symfony", "twig"],
-    "description": "Jquery form validation bundle for symfony 2",
-    "require": {
-        "php": ">=5.5",
-        "symfony/framework-bundle": "^5.0",
-        "symfony/dependency-injection": "^4.0|^5.0",
-        "symfony/form": "~4.0|^5.0",
-        "symfony/validator": "~3.0|~4.0|~5.0",
-        "symfony/twig-bundle": "~3.0|~4.0|^5.0",
-        "symfony/twig-bridge": "~3.0|~4.0|^5.0",
-        "twig/twig": "^2.12",
-        "doctrine/collections": "~1.0",
-        "doctrine/annotations": "^1.12",
-        "symfony/security-csrf": "^5.2",
-        "symfony/templating": "^5.2",
-        "symfony/translation": "^5.2"
-    },
-    "require-dev": {
-        "symfony/browser-kit": "^4.0|^5.0",
-        "symfony/dom-crawler": "^5.0",
-        "symfony/finder": "^4.0|^5.0",
-        "symfony/yaml": "^4.0|^5.0",
-        "symfony/css-selector": "~2.3|~3.0",
-        "symfony/phpunit-bridge": "^5.2",
-        "symfony/var-dumper": "^5.2"
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Warnar Boekkooi",
-            "email": "warnar@boekkooi.net"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "Boekkooi\\Bundle\\JqueryValidationBundle\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\Boekkooi\\Bundle\\JqueryValidationBundle\\": "tests/"
-        }
-    },
-    "prefer-stable": true,
-    "minimum-stability": "dev"
+  "name": "boekkooi/jquery-validation-bundle",
+  "type": "symfony-bundle",
+  "keywords": [
+    "jquery",
+    "form",
+    "validation",
+    "validator",
+    "symfony",
+    "twig"
+  ],
+  "description": "Jquery form validation bundle for symfony 2",
+  "require": {
+    "php": ">=5.5",
+    "symfony/framework-bundle": "^5.0",
+    "symfony/dependency-injection": "^5.0",
+    "symfony/form": "^5.0",
+    "symfony/validator": "^5.0",
+    "symfony/twig-bundle": "^5.0",
+    "symfony/twig-bridge": "^5.0",
+    "twig/twig": "^2.12",
+    "doctrine/collections": "~1.0",
+    "doctrine/annotations": "^1.12",
+    "symfony/security-csrf": "^5.0",
+    "symfony/templating": "^5.0",
+    "symfony/translation": "^5.0"
+  },
+  "require-dev": {
+    "symfony/browser-kit": "^5.0",
+    "symfony/dom-crawler": "^5.0",
+    "symfony/finder": "^5.0",
+    "symfony/yaml": "^5.0",
+    "symfony/css-selector": "~3.0",
+    "symfony/phpunit-bridge": "^5.0",
+    "symfony/var-dumper": "^5.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Warnar Boekkooi",
+      "email": "warnar@boekkooi.net"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Boekkooi\\Bundle\\JqueryValidationBundle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Boekkooi\\Bundle\\JqueryValidationBundle\\": "tests/"
+    }
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev"
 }

@@ -18,7 +18,7 @@ class BoekkooiJqueryValidationExtension extends Extension
      */
     public function load(array $config, ContainerBuilder $container)
     {
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
 
         $processor = new Processor();
@@ -41,9 +41,10 @@ class BoekkooiJqueryValidationExtension extends Extension
     }
 
     /**
-     * @param array $config
+     * @param array            $config
      * @param ContainerBuilder $container
-     * @param LoaderInterface $loader
+     * @param LoaderInterface  $loader
+     * @throws \Exception
      */
     private function configureForm(ContainerBuilder $container, array $config, LoaderInterface $loader)
     {
@@ -55,9 +56,10 @@ class BoekkooiJqueryValidationExtension extends Extension
     }
 
     /**
-     * @param array $config
+     * @param array            $config
      * @param ContainerBuilder $container
-     * @param LoaderInterface $loader
+     * @param LoaderInterface  $loader
+     * @throws \Exception
      */
     private function configureFormAdditionals(ContainerBuilder $container, array $config, LoaderInterface $loader)
     {

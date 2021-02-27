@@ -44,7 +44,7 @@
 
 {# Generate a rule #}
 {% macro rule(rule, includeGroupDeps) %}
-    {% import "BoekkooiJqueryValidationBundle:Form:conditions.js.twig" as macro_conditions %}
+    {% import "@BoekkooiJqueryValidation/Form/conditions.js.twig" as macro_conditions %}
 
     {%- set hasGroups = includeGroupDeps|default(false) and rule.groups is defined and rule.groups|length > 0 -%}
     {%- set hasConditions = (rule.conditions is not empty) -%}
@@ -120,6 +120,6 @@
     {%- if msg.plural is null -%}
         {{- msg.message|trans(msg.parameters, 'validators')|e('js') -}}
     {%- else -%}
-        {{- msg.message|transchoice(msg.plural, msg.parameters|merge({'%count%': msg.plural}), 'validators')|e('js') -}}
+        {{- msg.message|trans(msg.parameters|merge({'count': msg.plural}), 'validators')|e('js') -}}
     {%- endif -%}
 {% endmacro %}
