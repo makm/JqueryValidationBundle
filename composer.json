@@ -22,7 +22,6 @@
     "doctrine/collections": "~1.0",
     "doctrine/annotations": "^1.12",
     "symfony/security-csrf": "^5.0",
-    "symfony/templating": "^5.0",
     "symfony/translation": "^5.0"
   },
   "require-dev": {
