@@ -1,10 +1,11 @@
 <?php
+
 namespace Boekkooi\Bundle\JqueryValidationBundle\Form\Extension;
 
 use Boekkooi\Bundle\JqueryValidationBundle\Exception\LogicException;
 use Boekkooi\Bundle\JqueryValidationBundle\Form\FormDataConstraintFinder;
-use Boekkooi\Bundle\JqueryValidationBundle\Form\FormRuleContextBuilder;
 use Boekkooi\Bundle\JqueryValidationBundle\Form\FormRuleCompilerInterface;
+use Boekkooi\Bundle\JqueryValidationBundle\Form\FormRuleContextBuilder;
 use Boekkooi\Bundle\JqueryValidationBundle\Form\FormRuleProcessorContext;
 use Boekkooi\Bundle\JqueryValidationBundle\Form\FormRuleProcessorInterface;
 use Boekkooi\Bundle\JqueryValidationBundle\Form\Util\FormHelper;
@@ -14,7 +15,6 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraint;
 
 /**
@@ -42,8 +42,12 @@ class FormTypeExtension extends AbstractTypeExtension
      */
     private $formRuleProcessor;
 
-    public function __construct(FormRuleProcessorInterface $formRuleProcessor, FormRuleCompilerInterface $formRuleCompiler, FormDataConstraintFinder $constraintFinder, $enabled = true)
-    {
+    public function __construct(
+        FormRuleProcessorInterface $formRuleProcessor,
+        FormRuleCompilerInterface $formRuleCompiler,
+        FormDataConstraintFinder $constraintFinder,
+        $enabled = true
+    ) {
         $this->constraintFinder = $constraintFinder;
         $this->defaultEnabled = $enabled;
         $this->formRuleCompiler = $formRuleCompiler;
@@ -121,10 +125,11 @@ class FormTypeExtension extends AbstractTypeExtension
     /**
      * @inheritdoc
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         if ($resolver instanceof OptionsResolver && method_exists($resolver, 'setDefault')) {
             $this->configureOptions($resolver);
+
             return;
         }
 
@@ -149,11 +154,11 @@ class FormTypeExtension extends AbstractTypeExtension
     /**
      * @inheritdoc
      */
-    public function getExtendedType()
+    public static function getExtendedTypes(): iterable
     {
-        return FormHelper::isSymfony3Compatible() ? FormType::class : 'form';
+        return [FormType::class];
     }
-
+    
     /**
      * @param FormView $view
      * @return FormRuleContextBuilder

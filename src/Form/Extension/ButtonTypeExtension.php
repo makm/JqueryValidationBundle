@@ -1,4 +1,5 @@
 <?php
+
 namespace Boekkooi\Bundle\JqueryValidationBundle\Form\Extension;
 
 use Boekkooi\Bundle\JqueryValidationBundle\Form\FormRuleContextBuilder;
@@ -31,16 +32,16 @@ class ButtonTypeExtension extends AbstractTypeExtension
         $context->addButton($view, FormHelper::getValidationGroups($form));
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getExtendedType()
-    {
-        return FormHelper::isSymfony3Compatible() ? ButtonType::class : 'button';
-    }
-
     protected function hasRuleBuilderContext(FormView $view)
     {
         return isset($view->vars['rule_builder']) && $view->vars['rule_builder'] instanceof FormRuleContextBuilder;
+    }
+
+    /**
+     * @return iterable
+     */
+    public static function getExtendedTypes(): iterable
+    {
+        return [ButtonType::class];
     }
 }

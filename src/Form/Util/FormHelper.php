@@ -15,11 +15,19 @@ use Symfony\Component\Validator\Constraint;
  */
 final class FormHelper
 {
+    /**
+     * @deprecated
+     * @return bool
+     */
     public static function isSymfony3Compatible()
     {
         return method_exists(AbstractType::class, 'getBlockPrefix');
     }
 
+    /**
+     * @deprecated
+     * @return bool
+     */
     public static function isSymfony2Compatible()
     {
         return method_exists(ResolvedFormTypeInterface::class, 'getName');
